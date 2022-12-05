@@ -29,7 +29,6 @@ body {
     box-sizing: border-box;
     text-align: right;
     direction: rtl;
-    height: 50000px;
 }
 a {
     text-decoration: none;
@@ -37,6 +36,11 @@ a {
         text-decoration: none;
     }
 }
+.panel-heading.active  {
+    background-color: red($color: #000000);
+}
+
+
 transition {
     transition: 0.3s;
     -webkit-transition: 0.3s;
@@ -51,14 +55,38 @@ transition {
 .swiper-pagination {
     text-align: left !important;
     .swiper-pagination-bullet-active {
-       background: $second-color;
+        background: $second-color;
     }
     .swiper-pagination-bullet {
         width: 12px;
         height: 12px;
         @include breakpoints(small) {
-           width: 10px;
-           height: 10px;
+            width: 10px;
+            height: 10px;
+        }
+        @include breakpoints(mobile) {
+            width: 10px;
+            height: 10px;
+        }
+    }
+    @include breakpoints(small) {
+        text-align: center !important;
+    }
+    @include breakpoints(mobile) {
+        text-align: center !important;
+    }
+}
+.swiper-pagination-1 {
+    text-align: left !important;
+    .swiper-pagination-bullet-active {
+        background: $main-color;
+    }
+    .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        @include breakpoints(small) {
+            width: 10px;
+            height: 10px;
         }
         @include breakpoints(mobile) {
             width: 10px;
@@ -291,7 +319,77 @@ transition {
 
 }
 // End Up-Navbar
+// Navbar Mobile {
+body.open .background {
+    filter: blur(20px);
+}
+body.open .navbar-burger {
+    background-image: url("../img/close.png");
+}
 
+.navbar-menu {
+    @include breakpoints(small) {
+        z-index: 2;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.5s;
+    }
+    @include breakpoints(mobile) {
+        z-index: 2;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.5s;
+    }
+}
+body.open .navbar-menu {
+    opacity: 1;
+    visibility: visible;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 25px;
+}
+
+.navbar-menu > a {
+    color: #f9f9f9;
+    font-size: 32px;
+    font-family: "Euclid Circular A";
+    text-decoration: none;
+}
+
+body.open .navbar-menu > a {
+    animation: appear 0.3s both;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        translate: 0 50px;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 /**
  *
  * Start Navbar
@@ -355,12 +453,43 @@ transition {
                 @include breakpoints(medium) {
                     font-size: 13px;
                 }
+                @include breakpoints(small) {
+                    display: flex;
+                    flex-direction: row;
+                    justify-items: center;
+                    align-items: center;
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 15px;
+                    gap: 0;
+                }
+                @include breakpoints(mobile) {
+                    display: flex;
+                    flex-direction: row;
+                    justify-items: center;
+                    align-items: center;
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 15px;
+                    gap: 0;
+                }
             }
             &:hover {
                 color: #fff;
                 background-color: $main-color;
                 border-bottom: 2px solid $main-color-alt;
                 text-decoration: none;
+                @include breakpoints(small) {
+                    border-bottom: none;
+                    background-color: transparent;
+                    color: $main-color;
+                }
+                @include breakpoints(mobile) {
+                    border-bottom: none;
+                    background-color: transparent;
+                    color: $main-color;
+
+                }
             }
             &:last-child {
                 border-left: 1px solid transparent;
@@ -368,16 +497,107 @@ transition {
             &:hover a {
                 color: #fff;
             }
+            .icon {
+                @include breakpoints(small) {
+                    margin: 0 20px;
+                }
+                @include breakpoints(mobile) {
+                    margin: 0 20px;
+                }
+
+            }
             @include breakpoints(medium) {
                 height: 70px;
             }
+            @include breakpoints(small) {
+                padding: 5px 0;
+                text-align: center;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-bottom: none;
+                border-left: none;
+                border-right: none;
+                cursor: pointer;
+                color: #fff;
+            }
+            @include breakpoints(mobile) {
+                padding: 5px 0;
+                text-align: center;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-bottom: none;
+                border-left: none;
+                border-right: none;
+                cursor: pointer;
+                color: #fff;
+            }
         }
+        // @include breakpoints(small) {
+        //     display: none;
+        // }
+        // @include breakpoints(mobile) {
+        //     display: none;
+        // }
+    }
+    button {
+        display: none !important;
         @include breakpoints(small) {
-            display: none;
+            border: 0;
+            padding: 0;
+            background: transparent;
+            cursor: pointer;
+            display: inline-block !important;
+            font-size: 28px;
         }
         @include breakpoints(mobile) {
-            display: none;
+            border: 0;
+            padding: 0;
+            background: transparent;
+            cursor: pointer;
+            display: inline-block !important;
+            font-size: 28px;
         }
+        &:foucs {
+            outline: none;
+            border: none;
+        }
+    }
+    .navbar-burger {
+        outline: none;
+        z-index: 3;
+        top: 0;
+        right: 0;
+        display: grid;
+        place-items: center;
+        width: 72px;
+        height: 72px;
+        background-image: url("../img/menu.png");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    @include breakpoints(Mobile) {
+        z-index: 1;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 72px;
+        padding-left: 20px;
+        padding-right: 72px;
+        background: #19191c;
+        color: #f9f9f9;
+    }
+    @include breakpoints(small) {
+        height: 70px;
+    }
+    @include breakpoints(mobile) {
+        height: 70px;
     }
 }
 .navbar-scroll {
@@ -587,13 +807,19 @@ transition {
                 -o-border-radius: 50%;
                 width: 100px;
                 height: 100px;
-               
+
                 border: 1px solid #a4a2a7;
                 cursor: pointer;
                 @extend transition;
                 &:hover {
                     border: 1px solid $main-color;
                 }
+            }
+            @include breakpoints(medium) {
+                width: 565px;
+            }
+            @include breakpoints(mobile) {
+                width: 330px;
             }
         }
         .text {
@@ -627,6 +853,15 @@ transition {
                 &:hover {
                     background-color: $main-color;
                 }
+                @include breakpoints(medium) {
+                    right: 45%;
+                }
+                @include breakpoints(small) {
+                    right: 0;
+                }
+                @include breakpoints(mobile) {
+                    right: 0;
+                }
             }
         }
         &:hover {
@@ -649,8 +884,14 @@ transition {
         flex-direction: column;
         justify-content: space-around;
         margin: 30px 0;
+        @include breakpoints(small) {
+            margin: 7px 0;
         }
-        
+        @include breakpoints(mobile) {
+            margin: 7px 0;
+        }
+    }
+
     .timeline {
         display: flex;
         flex-direction: row;
@@ -670,7 +911,7 @@ transition {
             display: flex;
             justify-content: center;
             align-items: center;
-            @include breakpoints(mobile){
+            @include breakpoints(mobile) {
                 width: 90px;
             }
             .icons {
@@ -686,6 +927,12 @@ transition {
                 width: 2px;
                 background: $gray-color;
                 bottom: -110px;
+                @include breakpoints(small) {
+                    display: none;
+                }
+                @include breakpoints(mobile) {
+                    display: none;
+                }
             }
         }
         .last-icon {
@@ -699,7 +946,7 @@ transition {
             h4 {
                 font-size: 15px;
                 font-weight: bold;
-                margin-bottom:15px;
+                margin-bottom: 15px;
                 color: $main-color;
                 @extend transition;
                 &:hover {
@@ -720,14 +967,37 @@ transition {
                 color: $second-color;
             }
         }
+        @include breakpoints(small) {
+            margin: 10px 0;
+        }
+        @include breakpoints(mobile) {
+            margin: 10px 0;
+        }
+    }
+    .display-none {
+        @include breakpoints(medium) {
+            display: none !important;
+        }
+        @include breakpoints(small) {
+            display: none !important;
+        }
+        @include breakpoints(mobile) {
+            display: none !important;
+        }
     }
     .timeline-mobile {
         max-width: 100%;
+        margin: 0 auto;
         @include breakpoints(small) {
-            display: none;
+            display: none !important;
         }
         @include breakpoints(mobile) {
-            display: none;
+            display: none !important;
+        }
+
+        img {
+            object-fit: contain;
+            width: 100%;
         }
     }
 }
@@ -760,7 +1030,7 @@ transition {
                     align-items: center;
                     justify-content: center;
                     color: #fff;
-                    background: rgba($second-color, 0.8) url(../img/slic.png) no-repeat;
+                    background: rgba($second-color, 0.8) url("../img/slic.png") no-repeat;
                     background-size: cover;
                     height: 100%;
                     width: 65%;
@@ -796,7 +1066,7 @@ transition {
             }
             &:hover {
                 .name {
-                    background: rgba($main-color, 0.8) url(../img/slic.png) no-repeat;
+                    background: rgba($main-color, 0.8) url("../img/slic.png") no-repeat;
                     background-size: cover;
                 }
                 &::before {
@@ -804,7 +1074,7 @@ transition {
                     background-color: $second-color;
                 }
             }
-            
+
             .body {
                 display: flex;
                 height: 140px;
@@ -873,43 +1143,43 @@ transition {
                 background-color: $main-color;
                 top: -7px;
                 @extend transition;
-        }
-        .buy-now {
-            background-color: #f8f8f8;
-            width: 100%;
-            padding: 8px 0;
-            margin: 7px 0;
-            text-align: center;
-            color: $main-color;
-            font-size: 14px;
-            display: flex;
-            justify-content: center;
-            @extend transition;
-            &:hover {
-                background-color: $main-color;
-                color: $second-color;
-                font-weight: bold;
-                .sms-price {
-                    &:after {
-                        content: "";
-                        position: absolute;
-                        height: 100%;
-                        width: 1px;
-                        background-color: $gray-color;
-                        top: 0;
-                        right: 0;
+            }
+            .buy-now {
+                background-color: #f8f8f8;
+                width: 100%;
+                padding: 8px 0;
+                margin: 7px 0;
+                text-align: center;
+                color: $main-color;
+                font-size: 14px;
+                display: flex;
+                justify-content: center;
+                @extend transition;
+                &:hover {
+                    background-color: $main-color;
+                    color: $second-color;
+                    font-weight: bold;
+                    .sms-price {
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            height: 100%;
+                            width: 1px;
+                            background-color: $gray-color;
+                            top: 0;
+                            right: 0;
+                        }
                     }
                 }
             }
-        }
-        @include breakpoints(small){
-            width: 250px;
-            margin: 0 auto;
-        }
-        @include breakpoints(mobile){
-            width: 250px;
-            margin: 0 auto;
-         }
+            @include breakpoints(small) {
+                width: 250px;
+                margin: 0 auto;
+            }
+            @include breakpoints(mobile) {
+                width: 250px;
+                margin: 0 auto;
+            }
         }
     }
 }
@@ -917,7 +1187,7 @@ transition {
 // Start Info 
 .info {
     margin: 20px 0;
-    background-image: url(../img/bg-clnt.png);
+    background-image: url("../img/bg-clnt.png");
     background-repeat: no-repeat;
     background-size: cover;
     padding: 60px 0;
@@ -927,11 +1197,11 @@ transition {
         @include breakpoints(small) {
             order: 2;
             justify-content: center;
-           }
-       @include breakpoints(mobile) {
-        order: 2;
-        justify-content: center;
-       }
+        }
+        @include breakpoints(mobile) {
+            order: 2;
+            justify-content: center;
+        }
     }
     .box {
         max-height: 140px;
@@ -953,7 +1223,7 @@ transition {
             align-items: center;
             @include breakpoints(medium) {
                 font-size: 13px;
-                font-weight:300;
+                font-weight: 300;
             }
         }
         .bg-color {
@@ -992,7 +1262,7 @@ transition {
         background-color: #fff;
         margin-bottom: 0;
         h3 {
-            margin: 0 0 5px 0;
+            margin: 0 0 5px;
             font-size: 25px;
             color: $second-color;
             font-weight: bold;
@@ -1032,11 +1302,11 @@ transition {
             color: $main-color;
             margin: 5px 0;
             font-weight: bold;
-            @include breakpoints(small){
+            @include breakpoints(small) {
                 font-size: 15px;
                 text-align: center;
             }
-            @include breakpoints(mobile){
+            @include breakpoints(mobile) {
                 font-size: 15px;
                 text-align: center;
             }
@@ -1046,11 +1316,11 @@ transition {
             font-size: 14px;
             color: $gray-color;
             margin-bottom: 3px;
-            @include breakpoints(small){
+            @include breakpoints(small) {
                 font-size: 12px;
                 text-align: center;
             }
-            @include breakpoints(mobile){
+            @include breakpoints(mobile) {
                 font-size: 12px;
                 text-align: center;
             }
@@ -1068,9 +1338,9 @@ transition {
             margin-left: 20px;
             @include breakpoints(medium) {
                 width: 100%;
-               display: block;
-               float: none;
-               margin-bottom: 20px;
+                display: block;
+                float: none;
+                margin-bottom: 20px;
             }
         }
         p {
@@ -1102,14 +1372,13 @@ transition {
         @extend transition;
         &:hover {
             background-color: $second-color;
-            color: $main-color;
         }
-        @include breakpoints(small){
+        @include breakpoints(small) {
             margin: 0 auto;
             left: auto;
             display: block;
         }
-        @include breakpoints(mobile){
+        @include breakpoints(mobile) {
             margin: 0 auto;
             left: auto;
             display: block;
@@ -1152,14 +1421,14 @@ transition {
             line-height: 1.8;
             box-shadow: none;
         }
-        @include breakpoints(mobile){
+        @include breakpoints(mobile) {
             padding: 20px 0;
         }
     }
-    @include breakpoints(small){
+    @include breakpoints(small) {
         margin: 30px 0;
     }
-    @include breakpoints(mobile){
+    @include breakpoints(mobile) {
         margin: 30px 0;
     }
 }
@@ -1197,10 +1466,10 @@ transition {
         }
         .swiper-pagination-bullet-active {
             background: $main-color;
-         }
-         .swiper-pagination {
+        }
+        .swiper-pagination {
             position: fixed;
-         }
+        }
     }
 }
 // End Network
@@ -1210,8 +1479,9 @@ transition {
     .contact-info {
         display: flex;
         margin: 50px 0;
+        max-width: 100%;
         .text {
-            margin-right: 20px;
+            margin-right: 10px;
             h5 {
                 color: $second-color;
                 font-size: 15px;
@@ -1261,7 +1531,7 @@ transition {
                 color: $main-color;
                 cursor: pointer;
             }
-            
+
         }
     }
     // Form
@@ -1313,13 +1583,26 @@ transition {
             &:hover {
                 background: $second-color;
             }
+            @include breakpoints(small) {
+                left: 65%;
+            }
+            @include breakpoints(small) {
+                left: 0;
+                display: block;
+                margin: 0 auto;
+            }
+            @include breakpoints(mobile) {
+                left: 0;
+                display: block;
+                margin: 0 auto;
+            }
         }
     }
 }
 // End Contact
 // Start Up-footer
 .up-footer {
-    padding: 0 ;
+    padding: 0;
     background-color: $main-color;
     overflow: hidden;
     .flex {
@@ -1334,14 +1617,21 @@ transition {
             width: 1px;
             height: 100%;
             background: #ff8984;
-        }
-        @include breakpoints(mobile) {
-            &:last-child {
-                display: flex;
-                flex-direction: column;
+            @include breakpoints(small) {
+                display: none;
+            }
+            @include breakpoints(mobile) {
+                display: none;
             }
         }
+        @include breakpoints(small) {
+            justify-content: center;
+        }
+        @include breakpoints(mobile) {
+            justify-content: center;
+        }
     }
+
     .social {
         display: flex;
         align-items: center;
@@ -1361,13 +1651,13 @@ transition {
                 color: #fff;
                 background-color: #d05158;
                 border-radius: 50%;
-                @extend transition ;
+                @extend transition;
                 &:hover {
                     background: $second-color;
                 }
             }
         }
-        
+
     }
     .subscribe {
         display: flex;
@@ -1399,21 +1689,43 @@ transition {
             color: $second-color !important;
             font-size: 13px;
             padding: 5px 7px;
-         }
-    
-    .btn-sub {
-        background: $second-color;
-        margin: 0 5px;
-        text-align: center;
-        padding: 6px;
-        width: 120px;
-        color: #fff;
-        @extend transition;
-        &:hover {
-            background: #d05158;
+        }
+
+        .btn-sub {
+            background: $second-color;
+            margin: 0 5px;
+            text-align: center;
+            padding: 6px;
+            width: 120px;
+            color: #fff;
+            @extend transition;
+            &:hover {
+                background: #d05158;
+            }
+        }
+        @include breakpoints(small) {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 15px;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        @include breakpoints(mobile) {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 15px;
+            justify-content: space-between;
+            flex-direction: column;
         }
     }
-}
+    @include breakpoints(small) {
+        padding: 20px 0;
+    }
+    @include breakpoints(mobile) {
+        padding: 20px 0;
+    }
 }
 // End Up-Footer
 // Start Footer
@@ -1478,7 +1790,7 @@ transition {
             text-align: center;
             display: flex;
             flex-direction: column;
-           padding: 15px;
+            padding: 15px;
             align-items: center;
             justify-content: center;
         }
@@ -1515,7 +1827,7 @@ transition {
                     position: absolute;
                     width: 1px;
                     height: 100%;
-                    background: #41434f ;
+                    background: #41434f;
                     right: 0;
                 }
             }
@@ -1532,9 +1844,9 @@ transition {
 
     }
     .copyright {
-        background-color:#282a36;
+        background-color: #282a36;
         padding: 30px 0;
-        
+
         .container {
             display: flex;
             justify-content: space-between;
@@ -1579,7 +1891,7 @@ transition {
 // End Footer
 
 .div {
-    .circle {
+    .icon {
         width: 100px;
         height: 100px;
         line-height: 100px;
@@ -1589,13 +1901,14 @@ transition {
         color: white;
         font-size: 16px;
         margin: 0 auto 40px;
-        border: 1px solid red;
-        margin: 20px auto ;
-        color: red;
-        
-        .fa-user {
-            font-size: 40px;
+        border: 2px solid $gray-color;
+        margin: 20px auto;
+        display: flex;
+        @extend transition;
+
+        .icon-info {
+            font-size: 30px;
+            color: $second-color;
         }
-           
     }
 }
