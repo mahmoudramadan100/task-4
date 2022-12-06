@@ -795,6 +795,9 @@ body.open .navbar-menu > a {
   left: 0;
   background: rgba(33, 35, 47, 0.5);
 }
+.slider .swiper-button-next, .slider .swiper-button-prev {
+  z-index: 999;
+}
 .slider .swiper-button-next:after,
 .slider .swiper-button-prev:after {
   font-family: "Font Awesome 5 Free";
