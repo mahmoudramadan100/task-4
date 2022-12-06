@@ -136,9 +136,11 @@ transition {
         }
         @include breakpoints(small) {
             font-size: 17px;
+            margin: 10px 0;
         }
         @include breakpoints(mobile) {
             font-size: 15px;
+            margin: 10px 0;
         }
     }
     p {
@@ -151,6 +153,12 @@ transition {
         @include breakpoints(mobile) {
             font-size: 12px;
         }
+    }
+    @include breakpoints(small) {
+        margin: 0;
+    }
+    @include breakpoints(mobile) {
+        margin: 0;
     }
 }
 // Start UP-NABAR
@@ -282,7 +290,7 @@ transition {
                 content: "";
                 position: absolute;
                 width: 10px;
-                left: -10px;
+                left: -9px;
                 height: 10px;
                 z-index: 99;
                 background-color: #21232f;
@@ -335,11 +343,11 @@ body.open .navbar-burger {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        gap: 32px;
+        align-items: flex-start;
+        gap: 5px;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.8);
+        background: $second-color;
         opacity: 0;
         visibility: hidden;
         transition: 0.5s;
@@ -351,11 +359,11 @@ body.open .navbar-burger {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        gap: 32px;
+        align-items: flex-start;
+        gap: 5px;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.8);
+        background: $second-color;
         opacity: 0;
         visibility: hidden;
         transition: 0.5s;
@@ -460,8 +468,9 @@ body.open .navbar-menu > a {
                     align-items: center;
                     color: #fff;
                     text-decoration: none;
-                    font-size: 15px;
+                    font-size: 17px;
                     gap: 0;
+                    padding-right: 10px;
                 }
                 @include breakpoints(mobile) {
                     display: flex;
@@ -470,8 +479,9 @@ body.open .navbar-menu > a {
                     align-items: center;
                     color: #fff;
                     text-decoration: none;
-                    font-size: 15px;
+                    font-size: 17px;
                     gap: 0;
+                    padding-right: 10px;
                 }
             }
             &:hover {
@@ -512,7 +522,7 @@ body.open .navbar-menu > a {
             @include breakpoints(small) {
                 padding: 5px 0;
                 text-align: center;
-                height: 100px;
+                height: 55px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -525,7 +535,7 @@ body.open .navbar-menu > a {
             @include breakpoints(mobile) {
                 padding: 5px 0;
                 text-align: center;
-                height: 100px;
+                height: 55px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -668,6 +678,7 @@ body.open .navbar-menu > a {
                 margin: 80px 60px 70px;
             }
             @include breakpoints(mobile) {
+                letter-spacing: auto;
                 font-size: 15px;
                 margin: 80px 50px 70px;
             }
@@ -795,6 +806,18 @@ body.open .navbar-menu > a {
                 left: 0;
                 right: 0;
                 margin: 0 auto;
+                @include breakpoints(medium) {
+                    width: 50px;
+                    height: 50px;
+                }
+                @include breakpoints(small) {
+                    width: 50px;
+                    height: 50px;
+                }
+                @include breakpoints(mobile) {
+                    width: 35px;
+                    height: 35px;
+                }
             }
             &::after {
                 content: "";
@@ -807,34 +830,81 @@ body.open .navbar-menu > a {
                 -o-border-radius: 50%;
                 width: 100px;
                 height: 100px;
-
                 border: 1px solid #a4a2a7;
                 cursor: pointer;
                 @extend transition;
                 &:hover {
                     border: 1px solid $main-color;
                 }
+                @include breakpoints(small) {
+                    width: 80px;
+                    height: 80px;
+                }
+                @include breakpoints(mobile) {
+                    width: 80px;
+                    height: 80px;
+                }
+            }
+            @include breakpoints(large) {
+                width: 325px;
             }
             @include breakpoints(medium) {
-                width: 565px;
+                width: 80px;
+                height: 80px;
+                margin: 0 auto;
+                padding: 0 !important;
+                transform: translate(0, 0);
+            }
+            @include breakpoints(small) {
+                width: 70px;
+                height: 70px;
+                margin: 0 auto;
+                padding: 0 !important;
+                transform: translate(0, 0);
             }
             @include breakpoints(mobile) {
-                width: 330px;
+                width: 70px;
+                height: 70px;
+                margin: 0 auto;
+                padding: 0 !important;
+                transform: translate(0, 0);
             }
         }
         .text {
             padding: 0 15px;
             h3 {
-                font-size: 16px;
+                font-size: 15px;
                 text-align: right;
                 color: $main-color;
                 font-weight: bold;
                 margin-bottom: 15px;
+                @extend transition;
+                @include breakpoints(medium) {
+                    font-size: 14px;
+                    text-align: center;
+                    margin: 10px 0;
+                }
+                @include breakpoints(small) {
+                    font-size: 14px;
+                    text-align: center;
+                }
+                @include breakpoints(mobile) {
+                    font-size: 14px;
+                    text-align: center;
+                }
             }
             p {
                 font-size: 12px;
                 color: $gray-color;
                 line-height: 1.8;
+                @include breakpoints(small) {
+                    font-size: 11px;
+                    line-height: 1.7;
+                }
+                @include breakpoints(mobile) {
+                    font-size: 11px;
+                    line-height: 1.7;
+                }
             }
             .see-more {
                 color: #fff;
@@ -857,10 +927,13 @@ body.open .navbar-menu > a {
                     right: 45%;
                 }
                 @include breakpoints(small) {
-                    right: 0;
+                    // right: 0;
                 }
                 @include breakpoints(mobile) {
-                    right: 0;
+                    // right: 0;
+                    padding: 5px 20px;
+                    font-size: 11px;
+                    right: 30%;
                 }
             }
         }
@@ -870,6 +943,30 @@ body.open .navbar-menu > a {
             .see-more {
                 background-color: $main-color;
             }
+            h3 {
+                color: $second-color;
+            }
+        }
+        @include breakpoints(medium) {
+            gap: 25px;
+            flex-direction: column;
+            margin: 4px 0;
+            padding: 20px 0;
+            max-height: 300px;
+        }
+        @include breakpoints(small) {
+            gap: 25px;
+            flex-direction: column;
+            margin: 4px 0;
+            padding: 20px 0;
+            max-height: 300px;
+        }
+        @include breakpoints(mobile) {
+            gap: 25px;
+            flex-direction: column;
+            margin: 4px 0;
+            padding: 20px 0;
+            max-height: 300px;
         }
     }
 }
@@ -884,6 +981,7 @@ body.open .navbar-menu > a {
         flex-direction: column;
         justify-content: space-around;
         margin: 30px 0;
+        position: relative;
         @include breakpoints(small) {
             margin: 7px 0;
         }
@@ -900,6 +998,7 @@ body.open .navbar-menu > a {
         .icon {
             border: 2px solid $gray-color;
             width: 130px;
+            overflow: hidden;
             height: 80px;
             border-radius: 50%;
             -webkit-border-radius: 50%;
@@ -908,32 +1007,45 @@ body.open .navbar-menu > a {
             -o-border-radius: 50%;
             background-color: $second-color;
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            @include breakpoints(mobile) {
+            display: inline-block;
+            @include breakpoints(large) {
+                height: 65px;
+            }
+            @include breakpoints(medium) {
                 width: 90px;
+                height: 60px;
+            }
+            @include breakpoints(small) {
+                width: 115px;
+                height: 50px;
+            }
+            @include breakpoints(mobile) {
+                width: 50px;
+                height: 50px;
             }
             .icons {
                 color: $main-color;
                 text-align: center;
                 margin: 0 auto;
                 font-size: 35px;
-            }
-            &::after {
-                content: "";
                 position: absolute;
-                height: 110px;
-                width: 2px;
-                background: $gray-color;
-                bottom: -110px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                @include breakpoints(large) {
+                    font-size: 25px;
+                }
+                @include breakpoints(medium) {
+                    font-size: 18px;
+                }
                 @include breakpoints(small) {
-                    display: none;
+                    font-size: 17px;
                 }
                 @include breakpoints(mobile) {
-                    display: none;
+                    font-size: 16px;
                 }
-            }
+           
+        }
         }
         .last-icon {
             &::after {
@@ -952,10 +1064,26 @@ body.open .navbar-menu > a {
                 &:hover {
                     color: $second-color;
                 }
+                @include breakpoints(small) {
+                    font-size: 13px;
+                    margin-bottom: 8px;
+                }
+                @include breakpoints(mobile) {
+                    font-size: 13px;
+                    text-align: right;
+                    margin-top: 15px;
+                }
             }
             p {
                 color: #3E3E40;
                 font-size: 13px;
+                @include breakpoints(small) {
+                    text-align: right;
+                    margin: 0;
+                }
+                @include breakpoints(mobile) {
+                    text-align: right;
+                }
             }
         }
         &:hover {
@@ -967,11 +1095,47 @@ body.open .navbar-menu > a {
                 color: $second-color;
             }
         }
+        @include breakpoints(medium) {
+            margin: 20px 0;
+        }
         @include breakpoints(small) {
             margin: 10px 0;
         }
         @include breakpoints(mobile) {
             margin: 10px 0;
+        }
+         
+        &::after {
+            content: "";
+            position: absolute;
+            height: 119px;
+            width: 2px;
+            background: #a4a2a7;
+            bottom: -113px;
+            right: 40px;
+            @include breakpoints(large) {
+                bottom: -97px;
+                right: 30px;
+            }
+            @include breakpoints(medium) {
+                height: 71px;
+                bottom: -55px;
+                right: 26px;
+            }
+            @include breakpoints(small) {
+                height: 63px;
+                bottom: -45px;
+                right: 23px;
+            }
+            @include breakpoints(mobile) {
+                display: none;
+            }
+        }
+        &:last-child::after {
+            display: none;
+        }
+        @include breakpoints(mobile) {
+            display: flex;
         }
     }
     .display-none {
@@ -997,8 +1161,15 @@ body.open .navbar-menu > a {
 
         img {
             object-fit: contain;
-            width: 100%;
+            max-width: 100%;
         }
+    }
+    @include breakpoints(small) {
+        margin: 5px 0;
+    }
+    @include breakpoints(mobile) {
+        margin: 5px 0;
+        padding: 10px 0;
     }
 }
 
@@ -1030,7 +1201,7 @@ body.open .navbar-menu > a {
                     align-items: center;
                     justify-content: center;
                     color: #fff;
-                    background: rgba($second-color, 0.8) url("../img/slic.png") no-repeat;
+                    background: rgba($second-color, 1.95) url("../img/slic.png") no-repeat;
                     background-size: cover;
                     height: 100%;
                     width: 65%;
@@ -1061,6 +1232,9 @@ body.open .navbar-menu > a {
                         display: block;
                         font-size: 13px;
                         padding: 0 4px;
+                        @include breakpoints(medium) {
+                            font-size: 12px;
+                        }
                     }
                 }
             }
@@ -1181,6 +1355,12 @@ body.open .navbar-menu > a {
                 margin: 0 auto;
             }
         }
+        @include breakpoints(small) {
+            padding: 40px 0;
+        }
+        @include breakpoints(mobile) {
+            padding: 40px 0;
+        }
     }
 }
 // End Package
@@ -1225,6 +1405,10 @@ body.open .navbar-menu > a {
                 font-size: 13px;
                 font-weight: 300;
             }
+            @include breakpoints(mobile) {
+                font-size: 12px;
+                font-weight: 300;
+            }
         }
         .bg-color {
             background-color: $second-color;
@@ -1258,34 +1442,76 @@ body.open .navbar-menu > a {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 95%;
+        margin: 0 auto;
         height: 140px;
-        background-color: #fff;
+        background-color: #f3f3f3;
+        box-shadow: -5px 3px 42px 36px rgba(255,255,255,0.28) inset;
+        -webkit-box-shadow: -5px 3px 42px 36px rgba(255,255,255,0.28) inset;
+        -moz-box-shadow: -5px 3px 42px 36px rgba(255,255,255,0.28) inset;
         margin-bottom: 0;
         h3 {
             margin: 0 0 5px;
             font-size: 25px;
             color: $second-color;
             font-weight: bold;
+            @include breakpoints(medium) {
+                font-size: 15px;
+            }
+            @include breakpoints(mobile) {
+                font-size: 18px;
+            }
+            @include breakpoints(small) {
+                font-size: 16px;
+            }
         }
         p {
             margin: 0;
             font-size: 18px;
             color: $main-color;
             font-weight: bold;
+            @include breakpoints(medium) {
+                font-size: 16px;
+            }
+            @include breakpoints(mobile) {
+                font-size: 16px;
+            }
+            @include breakpoints(small) {
+                font-size: 14px;
+            }
+        }
+        @include breakpoints (medium) {
+            order: 1;
+            margin-bottom: 10px;
+            max-width: 310px;
+            margin: 0 auto 10px;
+            height: 140px;
+            width: 100%;
         }
         @include breakpoints (small) {
             order: 1;
-            margin-bottom: 30px;
-            margin-bottom: 30px;
-            max-width: 320px;
-            margin: 0 auto 30px;
+            margin-bottom: 10px;
+            max-width: 310px;
+            margin: 0 auto 10px;
+            height: 100px;
+            width: 100%;
         }
         @include breakpoints (mobile) {
             order: 1;
-            margin-bottom: 30px;
-            max-width: 320px;
-            margin: 0 auto 30px;
+            margin-bottom: 10px;
+            max-width: 310px;
+            margin: 0 auto 10px;
+            height: 100px;
+            width: 100%;
         }
+    }
+    @include breakpoints(small) {
+        margin: 0;
+        padding: 10px 0;
+    }
+    @include breakpoints(mobile) {
+        margin: 0;
+        padding: 10px 0;
     }
 }
 // End Info
@@ -1348,12 +1574,40 @@ body.open .navbar-menu > a {
             font-size: 13px;
             line-height: 1.8;
             margin-bottom: 20px;
-            @include breakpoints(mobile) {
+            @include breakpoints(medium) {
                 font-size: 12px;
+                width: 100%;
+                max-height: 240px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 15px 0 10px;
+            }
+            @include breakpoints(small) {
+                font-size: 12px;
+                width: 100%;
+                max-height: 236px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 15px 0 10px;
             }
             @include breakpoints(mobile) {
                 font-size: 11px;
+                width: 100%;
+                max-height: 237px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 15px 0 10px;
             }
+        }
+        @include breakpoints(small) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @include breakpoints(mobile) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     }
     .read-more {
@@ -1372,6 +1626,11 @@ body.open .navbar-menu > a {
         @extend transition;
         &:hover {
             background-color: $second-color;
+        }
+        @include breakpoints(medium) {
+            margin: 0 auto;
+            left: auto;
+            display: block;
         }
         @include breakpoints(small) {
             margin: 0 auto;
@@ -1459,6 +1718,9 @@ body.open .navbar-menu > a {
                 height: 100%;
                 background: #e0e0e0;
                 left: -35px;
+                @include breakpoints(mobile) {
+                    display: none;
+                }
             }
         }
         .swiper-wrapper {
@@ -1470,6 +1732,12 @@ body.open .navbar-menu > a {
         .swiper-pagination {
             position: fixed;
         }
+        @include breakpoints(small) {
+            padding: 10px 0;
+        }
+        @include breakpoints(mobile) {
+            padding: 10px 0;
+        }
     }
 }
 // End Network
@@ -1477,17 +1745,44 @@ body.open .navbar-menu > a {
 .contact {
     padding: 10px 0 40px;
     .contact-info {
+        margin: 15px 0;
+        padding: 20px;
         display: flex;
-        margin: 50px 0;
-        max-width: 100%;
+        gap: 10px;
+        position: relative;
         .text {
-            margin-right: 10px;
+            margin-right: 20px;
+            width:375px;
+            @include breakpoints(small) {
+                margin: 0;
+                width: auto;
+                text-align: right;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            @include breakpoints(mobile) {
+                margin: 0;
+                width: auto;
+                text-align: right;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
             h5 {
                 color: $second-color;
                 font-size: 15px;
                 font-weight: bold;
                 margin-bottom: 15px;
-                @extend transition
+                @extend transition;
+                @include breakpoints(small) {
+                    display: none;
+                }
+                @include breakpoints(mobile) {
+                    display: none;
+                }
             }
             a {
                 display: block;
@@ -1500,31 +1795,71 @@ body.open .navbar-menu > a {
             }
         }
         .icon {
-            width: 75px;
-            height: 75px;
-            display: flex;
-            border: 2px solid $gray-color;
+            width: 115px;
+            height: 70px;
             border-radius: 50%;
-            @extend transition
-            
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            background-color: $main-color;
+            position: relative;
+            display: inline-block;
+            @extend transition;
+            @include breakpoints(large) {
+                height: 65px;
+            }
+            @include breakpoints(medium) {
+                width: 90px;
+                height: 60px;
+            }
+            @include breakpoints(small) {
+                width: 50px;
+                height: 50px;
+            }
+            @include breakpoints(mobile) {
+                width: 50px;
+                height: 50px;
+            }
+            &::after {
+                content: "";
+                content: "";
+                position: absolute;
+                width: 110%;
+                height: 110%;
+                background-color: transparent;
+                border: 1px solid #a4a2a7;
+                top: 0;
+                left: 0;
+                border-radius: 50%;
+                margin: 0 auto;
+                transform: translate(-3%, -4%);
+            }
         }
         .icon-info {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             color: $second-color;
-            background-color: $main-color;
-            padding: 25px;
-            line-height: 15px;
-            font-size: 25px;
-            border-radius: 50%;
-            height: 20px;
-            width: 20px;
-            overflow: hidden;
+            text-align: center;
+            margin: 0 auto;
+            font-size: 30px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            @include breakpoints(large) {
+                font-size: 22px;
+            }
+            @include breakpoints(medium) {
+                font-size: 18px;
+            }
+            @include breakpoints(small) {
+                font-size: 17px;
+            }
+            @include breakpoints(mobile) {
+                font-size: 16px;
+            }
         }
         &:hover {
             .icon {
-                border: 2px solid $second-color;
                 cursor: pointer;
             }
             h5 {
@@ -1532,6 +1867,32 @@ body.open .navbar-menu > a {
                 cursor: pointer;
             }
 
+        }
+        &::before {
+            content: "";
+            width: 2px;
+            height: 135px;
+            background: #d6d6d6;
+            position: absolute;
+            top: 0;
+            right: 53px;
+            @include breakpoints(large) {
+                right: 45px;
+                height: 147px;
+            }
+            @include breakpoints(medium) {
+                right: 45px;
+            }
+            @include breakpoints(small) {
+                display: none;
+            }
+            @include breakpoints(mobile) {
+                display: none;
+            }
+        }
+        @include breakpoints(mobile) {
+            justify-content: flex-start;
+            align-items: center;
         }
     }
     // Form
@@ -1583,8 +1944,13 @@ body.open .navbar-menu > a {
             &:hover {
                 background: $second-color;
             }
-            @include breakpoints(small) {
-                left: 65%;
+            @include breakpoints(large) {
+                left: -76%;
+            }
+            @include breakpoints(medium) {
+                left: 0;
+                display: block;
+                margin: 0 auto;
             }
             @include breakpoints(small) {
                 left: 0;
@@ -1617,6 +1983,9 @@ body.open .navbar-menu > a {
             width: 1px;
             height: 100%;
             background: #ff8984;
+            @include breakpoints(medium) {
+                display: none;
+            }
             @include breakpoints(small) {
                 display: none;
             }
@@ -1641,6 +2010,9 @@ body.open .navbar-menu > a {
         position: relative;
         li {
             padding: 0 5px;
+            @include breakpoints(large) {
+                padding: 0 3px;
+            }
             .icon {
                 padding: 12px;
                 line-height: 8px;
@@ -1684,10 +2056,14 @@ body.open .navbar-menu > a {
             &::foucs {
                 border: 1px solid $second-color;
             }
+            @include breakpoints(mobile) {
+                width: 65%;
+                height: 35px;
+            }
         }
         ::placeholder {
             color: $second-color !important;
-            font-size: 13px;
+            font-size: 11px;
             padding: 5px 7px;
         }
 
@@ -1702,6 +2078,10 @@ body.open .navbar-menu > a {
             &:hover {
                 background: #d05158;
             }
+        }
+        @include breakpoints(medium) {
+            flex-direction: column;
+            gap: 10px;
         }
         @include breakpoints(small) {
             display: flex;
@@ -1857,7 +2237,7 @@ body.open .navbar-menu > a {
             }
             @include breakpoints(mobile) {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
             }
         }
         .logo {
@@ -1889,26 +2269,3 @@ body.open .navbar-menu > a {
 }
 
 // End Footer
-
-.div {
-    .icon {
-        width: 100px;
-        height: 100px;
-        line-height: 100px;
-        border-radius: 50%;
-        text-align: center;
-        background: #000;
-        color: white;
-        font-size: 16px;
-        margin: 0 auto 40px;
-        border: 2px solid $gray-color;
-        margin: 20px auto;
-        display: flex;
-        @extend transition;
-
-        .icon-info {
-            font-size: 30px;
-            color: $second-color;
-        }
-    }
-}

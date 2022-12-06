@@ -22,7 +22,7 @@
             @content;
         }
     } @else if $point == xlarge {
-        @media (min-width:1401px) and (max-width: 300px) {
+        @media (min-width:1401px) and (max-width: 3000px) {
             @content;
         }
 
