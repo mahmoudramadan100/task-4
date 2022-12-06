@@ -1,16 +1,16 @@
-// const navbar = document.querySelector('.navbar');
+const navbar = document.querySelector('.navbar');
 
-// window.onscroll = () => {
-//     if (window.scrollY > 550) {
-//         navbar
-//             .classList
-//             .add('navbar-scroll');
-//     } else {
-//         navbar
-//             .classList
-//             .remove('navbar-scroll');
-//     }
-// };
+window.onscroll = () => {
+    if (window.scrollY > 550) {
+        navbar
+            .classList
+            .add('navbar-scroll');
+    } else {
+        navbar
+            .classList
+            .remove('navbar-scroll');
+    }
+};
 
 // Header Slider
 
